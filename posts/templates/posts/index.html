@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico'%}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav-bar.css' %}">
+    <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
+</head>
+<body>
+    {% include '../components/nav-bar.html' %}
+    <main id="" class="main-container">
+        <section class="layout-game">
+            <section id="hud-player">
+                <section id="player-name">
+                    <span id="player-name-text">Jugador: </span>
+                    <span id="player-name-value">Jugador 1</span>
+                </section>
+                <section id="player-score">
+                    <span id="player-score-text">Puntaje: </span>
+                    <span id="player-score-value"></span>
+                </section>
+                <section id="player-lives">
+                    <span id="player-lives-text">Vidas: </span>
+                    <span id="player-lives-value"></span>
+                </section>
+            </section>
+            <section id="container-word">
+            </section>
+            <section class="keyboard">
+                <section class="row-keyboard">
+                    <span id="key_q" class="key-enable" onclick="getLetter('q')">Q</span>
+                    <span id="key_w" class="key-enable" onclick="getLetter('w')">W</span>
+                    <span id="key_e" class="key-enable" onclick="getLetter('e')">E</span>
+                    <span id="key_r" class="key-enable" onclick="getLetter('r')">R</span>
+                    <span id="key_t" class="key-enable" onclick="getLetter('t')">T</span>
+                    <span id="key_y" class="key-enable" onclick="getLetter('y')">Y</span>
+                    <span id="key_u" class="key-enable" onclick="getLetter('u')">U</span>
+                    <span id="key_i" class="key-enable" onclick="getLetter('i')">I</span>
+                    <span id="key_o" class="key-enable" onclick="getLetter('o')">O</span>
+                    <span id="key_p" class="key-enable" onclick="getLetter('p')">P</span>
+                </section> 
+                <section class="row-keyboard">
+                    <span id="key_a" class="key-enable" onclick="getLetter('a')">A</span>
+                    <span id="key_s" class="key-enable" onclick="getLetter('s')">S</span>
+                    <span id="key_d" class="key-enable" onclick="getLetter('d')">D</span>
+                    <span id="key_f" class="key-enable" onclick="getLetter('f')">F</span>
+                    <span id="key_g" class="key-enable" onclick="getLetter('g')">G</span>
+                    <span id="key_h" class="key-enable" onclick="getLetter('h')">H</span>
+                    <span id="key_j" class="key-enable" onclick="getLetter('j')">J</span>
+                    <span id="key_k" class="key-enable" onclick="getLetter('k')">K</span>
+                    <span id="key_l" class="key-enable" onclick="getLetter('l')">L</span>
+                </section>
+                <section class="row-keyboard">
+                    <span id="key_z" class="key-enable" onclick="getLetter('z')">Z</span>
+                    <span id="key_x" class="key-enable" onclick="getLetter('x')">X</span>
+                    <span id="key_c" class="key-enable" onclick="getLetter('c')">C</span>
+                    <span id="key_v" class="key-enable" onclick="getLetter('v')">V</span>
+                    <span id="key_b" class="key-enable" onclick="getLetter('b')">B</span>
+                    <span id="key_n" class="key-enable" onclick="getLetter('n')">N</span>
+                    <span id="key_m" class="key-enable" onclick="getLetter('m')">M</span>
+                </section>
+            </section>    
+        </section>
+        <section class="layout-ahorcado">
+            <img class="img-hangman" id="img-hangman" alt="Cuerpo del Ahorcado" loading="lazy"/>
+        </section>
+    </main>
+</body>
+<script src="{% static 'js/LoaderBodyLose.js'%}"></script>
+<script src="{% static 'js/SoundEffects.js'%}"></script>
+<script src="{% static 'js/index.js'%}"></script>
+</html>
