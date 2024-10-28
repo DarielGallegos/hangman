@@ -2,7 +2,10 @@
 var resourcesPath = "./static/assets/sounds/";
 
 var dataSounds = [
-    {id: "error_sound", src: resourcesPath + "error-letter.mp3"},
+    {id: "error_sound", src: resourcesPath + "error.mp3"},
+    {id: "success_sound", src: resourcesPath + "succes.mp3"},
+    {id: "fail_sound", src: resourcesPath + "lose.mp3"},
+    {id: "win_sound", src: resourcesPath + "wiiin.mp3"},
 ]
 
 dataSounds.forEach(element => {
