@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Hangman</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico'%}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box Login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" required>
+                    <label for="">Usuario</label>
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label for="">Contraseña</label>
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <div class="input-box">
+                    <button id="loginBtn" class="btn" type="submit">Ingresar
+                    </button>
+                </div>
+                <br>
+                <div class="register-link">
+                    <p>¿No tienes una cuenta? <a href="#" class="signUpLink">Registrate</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-content Login">
+            <img src="../../static/assets/images/icon.png" alt=""><br>
+            <h2>WELCOME TO <br>HANGMAN GAME</h2>
+        </div>
+
+        <div class="form-box Register">
+            <h2>Registro</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" required>
+                    <label for="">Usuario</label>
+                    <i class='bx bx-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label for="">Contraseña</label>
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <div class="input-box">
+                    <button class="btn" type="submit">Registrarse
+                        </span>
+                    </button>
+                </div>
+                <br>
+                <div class="register-link">
+                    <p>Ya tienes una cuenta <a href="#" class="signInLink">Inicia Sesión</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-content Register">
+            <img src="../../static/assets/images/icon.png" alt=""><br>
+            <h2>WELCOME TO <br>HANGMAN GAME</h2>
+        </div>
+    </div>
+
+    
+    <script src="{% static 'js/login.js'%}"></script>
+</body>
+
+</html>
