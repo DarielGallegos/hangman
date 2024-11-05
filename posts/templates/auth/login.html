@@ -17,26 +17,24 @@
     <div class="container">
         <div class="form-box Login">
             <h2>Login</h2>
-            <form action="#">
                 <div class="input-box">
-                    <input type="text" required>
+                    <input id="txtUser" type="text" required>
                     <label for="">Usuario</label>
                     <i class='bx bx-user'></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" required>
+                    <input id="txtPasswd" type="password" required>
                     <label for="">Contraseña</label>
                     <i class='bx bx-lock-alt'></i>
                 </div>
                 <div class="input-box">
-                    <button id="loginBtn" class="btn" type="submit">Ingresar
+                    <button id="loginBtn" class="btn">Ingresar
                     </button>
                 </div>
                 <br>
                 <div class="register-link">
                     <p>¿No tienes una cuenta? <a href="#" class="signUpLink">Registrate</a></p>
                 </div>
-            </form>
         </div>
         <div class="info-content Login">
             <img src="../../static/assets/images/icon.png" alt=""><br>
@@ -75,6 +73,7 @@
 
     
     <script src="{% static 'js/login.js'%}"></script>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
 </body>
 
 </html>

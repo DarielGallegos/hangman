@@ -19,7 +19,7 @@
             <section id="hud-player">
                 <section id="player-name">
                     <span id="player-name-text">Jugador: </span>
-                    <span id="player-name-value">Pollito</span>
+                    <span id="player-name-value">{{ user }}</span>
                 </section>
                 <section id="player-score">
                     <span id="player-score-text">Puntaje: </span>
@@ -100,14 +100,17 @@
             <span class="close-catg">&times;</span>
             <h2>SELECCIONE UNA CATEGORÍA</h2>
             <div class="category-btn">
-                <button class="button basic" id="basico">Básico</button>
-                <br><button class="button int" id="intermedio">Intermedio</button>
-                <br><button class="button avan" id="avanzado">Avanzado</button>
+                <button onclick="selectDificult(1)" class="button basic" id="basico">Básico</button>
+                <button onclick="selectDificult(2)" class="button int" id="intermedio">Intermedio</button>
+                <button onclick="selectDificult(3)" class="button avan" id="avanzado">Avanzado</button>
             </div>
         </div>
     </div>
     <!--fin modal-->
 </body>
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/InitGame.js'%}"></script>
+<script src="{% static 'js/logout.js'%}"></script>
 <script src="{% static 'js/LoaderBodyLose.js'%}"></script>
 <script src="{% static 'js/SoundEffects.js'%}"></script>
 <script src="{% static 'js/index.js'%}"></script>

@@ -1,0 +1,4 @@
+[client]
+database = hangman
+user = hangman
+password = hangman
