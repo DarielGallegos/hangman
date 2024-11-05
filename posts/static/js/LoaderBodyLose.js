@@ -1,5 +1,5 @@
 //Array Img To Load Body
-let imgPathSource = "./static/assets/images/"
+let imgPathSource = "/static/assets/images/"
 let dataBody = [
     {src: imgPathSource + "Fin.svg"},
     {src: imgPathSource + "Piernas.svg"},

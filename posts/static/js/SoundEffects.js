@@ -1,5 +1,5 @@
 //Initialize sources to sounds effects
-var resourcesPath = "./static/assets/sounds/";
+var resourcesPath = "/static/assets/sounds/";
 
 var dataSounds = [
     {id: "error_sound", src: resourcesPath + "error.mp3"},
