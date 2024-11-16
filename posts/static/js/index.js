@@ -5,8 +5,11 @@ let multiplier = 1;
 let lengthWord = 0;
 let lengthWordGuessed = 0;
 let palabra = null;
+let palabraFin = null;
 
 function loadWord(word) {
+    palabraFin = word.toUpperCase();
+    console.log(palabraFin);
     palabra = word.toUpperCase()
     palabra = palabra.split("")
     setDataHUD()
@@ -59,7 +62,7 @@ function getLetter(letter) {
                 lengthWordGuessed++
                 if (lengthWord === lengthWordGuessed) {
                     playSound(dataSounds[3]["id"])
-                    showModalResult("../../static/assets/images/completed.svg", points);
+                    showModalResult("../../static/assets/images/completed.svg", points, "Acertaste la palabra:" + "\n" + palabraFin);
                     return;
                 }
             }
@@ -72,7 +75,7 @@ function getLetter(letter) {
         playSound(dataSounds[0]["id"])
         if (attempts === 0) {
             playSound(dataSounds[2]["id"])
-            showModalResult("../../static/assets/images/failed.png", points);
+            showModalResult("../../static/assets/images/failed.png", points, "La palabra era: " + "\n" + palabraFin);
             setDataHUD()
             return;
         }
@@ -100,6 +103,7 @@ var modalResultado = document.getElementById("modal");
 var modalImg = document.getElementById("modal-img");
 var modalPoints = document.getElementById("modal-points");
 var closeModal = document.getElementById('continue-button');
+var modalWord = document.getElementById('modal-word');
 
 // Variables Modal de Categoria y demas...
 var modalC = document.getElementById('categoryModal'); 
@@ -112,10 +116,11 @@ var positions = document.getElementById('positions');
 var closeM = document.getElementById('closeM');
 
 // Modal Resumen
-function showModalResult(imgUrl, points) {
+function showModalResult(imgUrl, points, word) {
     modalResultado.style.display = "flex";
     modalImg.src = imgUrl;
     modalPoints.innerText = points;
+    modalWord.innerText = word;
 }
 
 
