@@ -1,4 +1,4 @@
 [client]
 database = hangman
-user = hangman
-password = hangman
+user = root
+password = 

@@ -4,7 +4,6 @@
     box-sizing: border-box;
     color: aliceblue;
     font-family: poppins;
-
 }
 
 @font-face {
@@ -20,58 +19,76 @@
 
 body {
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
     background: url(../assets/images/bg-login.jpg);
+    background-size: cover;
+    padding: auto;
+    margin: -20px 0 50px;
 }
 
 .container {
+    background-color: plum;
     position: relative;
-    width: 750px;
-    height: 450px;
-    border-radius: 20px;
-    border: 2px solid #1c0e32;
-    box-shadow: 0 0 30px #1c0e32;
     overflow: hidden;
-    transition: transform 0.6s ease-in-out; /* Transicion entre formularios */
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    border-radius: 20px;
+    border: 2px solid #E90064;
+    box-shadow: 0 0 20px #E90064;
+
 }
 
-.form-box {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
+form {
+    background-color: plum;
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; /* Transicion de  la posicion y opacidad */
-    opacity: 1;
+    padding: 0 50px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
 
-.form-box.Login {
-    left: 0;
+.form-container {
+    position: absolute;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
 }
 
-.form-box.Register {
-    right: 0;
-    transform: translateX(100%);/* no se muestra por default*/
+.sign-in-container {
+    width: 50%;
+    z-index: 2;
 }
 
-.form-box.hidden {
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.sign-up-container {
+    width: 50%;
     opacity: 0;
+    z-index: 1;
 }
 
-.container.active .form-box.Login {
-    transform: translateX(-100%);
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
 }
 
-.container.active .form-box.Register {
-    transform: translateX(0);
+.form-container h2 {
+    font-family: 'Sophia';
+    font-size: 32px;
+    text-align: center;
 }
 
-.form-box h2 {
+h1 {
+    margin-top: 30px;
     font-family: 'Sophia';
     font-size: 32px;
     text-align: center;
@@ -80,8 +97,16 @@ body {
 .input-box {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     margin-top: 25px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .input-box input {
@@ -106,7 +131,7 @@ body {
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
+    transform: translateY(-50%); 
     font-size: 16px;
     color: #fff;
     transition: .5s;
@@ -132,6 +157,12 @@ body {
     color: #E90064;
 }
 
+.name {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
 .register-link {
     text-align: center;
     margin-top: 20px;
@@ -145,46 +176,7 @@ body {
 }
 
 .register-link a:hover {
-    color: #FF4B83;
-}
-
-/* Estilo para la informacion al lado del formulario */
-.info-content {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
-    background-color: rgba(233, 0, 100, 0.2);
-
-}
-
-.info-content.Login {
-    right: 0;
-}
-
-.info-content.Login h2 {
-    font-family: 'Sophia';
-}
-
-.info-content.Register h2 {
-    font-family: 'Sophia';
-}
-
-.info-content.Register {
-    left: 0;
-    transform: translateX(-100%);
-}
-
-.container.active .info-content.Login {
-    transform: translateX(100%);
-}
-
-.container.active .info-content.Register {
-    transform: translateX(0);
+    color: #4c0d84;
 }
 
 .btn {
@@ -196,15 +188,125 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 20px;
+    transition: transform 80ms ease-in;
+    width: auto;
+    margin-top: 25px;
     font-size: 16px;
     font-weight: bold;
-    overflow: hidden;
 }
-
 
 .btn:hover {
     background-color: #FF4B83;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: #E90064;
+    background-size: cover;
+    background-position: 0 0;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+img {
+    width: 60%;
+}
+
+/*modal */
+.modalAlert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 300px;
+
+    border: 2px solid #E90064;
+    box-shadow: 0 0 20px #E90064;
+}
+
+.text {
+    color: #000000;
+}
+
+.error {
+    width: 40px;
+    height: 40px;
+}
+
+.modal-content button {
+    border-radius: 5px;
+}
+
+.modal-content.registro button {
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #1f5afe;
 }

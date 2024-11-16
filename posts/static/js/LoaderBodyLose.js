@@ -7,6 +7,7 @@ let dataBody = [
     {src: imgPathSource + "Pecho.svg"},
     {src: imgPathSource + "Cabeza.svg"},
     {src: imgPathSource + "Base.svg"},
+    {src: imgPathSource + "hi1.gif"},
 ]
 
 let imgHTML = document.getElementById("img-hangman")

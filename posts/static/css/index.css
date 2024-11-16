@@ -5,6 +5,11 @@
 }
 
 @font-face {
+  font-family: 'poppins';
+  src: url(../assets/fonts/Poppins-Regular.ttf) format(truetype);
+}
+
+@font-face {
   font-family: 'Sophia';
   src: url(../assets/fonts/SophiaFrancesca.ttf) format(truetype);
 }
@@ -14,6 +19,7 @@ body {
   font-size: 30px;
   color: #ffffff;
   background-image: url(../assets/images/background.jpg);
+  background-size: cover;
 }
 
 .main-container {
@@ -25,7 +31,8 @@ body {
 
 .layout-game {
   display: grid;
-  grid-template-rows: auto 1fr auto;/* distribucion de HUD, palabra, y teclado */
+  grid-template-rows: auto 1fr auto;
+  /* distribucion de HUD, palabra, y teclado */
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.216);
   padding: 10px;
@@ -50,7 +57,7 @@ body {
   align-items: center;
   font-size: 24px;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
 }
 
 #container-word .letter {
@@ -172,7 +179,13 @@ body {
   background-color: rgba(255, 255, 255, 0.216);
 }
 
-.layout-buttons-modal {
+.layout-buttons div {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center; 
+}
+
+.button-modal {
   margin: 20px;
   padding: 5px;
   display: flex;
@@ -209,6 +222,7 @@ body {
 }
 
 .close {
+  margin-top: 0;
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -234,6 +248,7 @@ body {
   border-radius: 0.3em;
   height: 3rem;
   width: 20rem;
+ width: 70%;
   line-height: 2.5em;
   text-transform: uppercase;
   padding: 0 1em;
@@ -280,10 +295,11 @@ body {
   height: 100%;
 }
 
-/* Hacerlo responsive */
+
 @media (max-width: 768px) {
   .main-container {
-    grid-template-columns: 1fr; /* se hace una sola columna en pantallas más pequeñas */
+    grid-template-columns: 1fr;
+    /* se hace una sola columna en pantallas más pequeñas */
   }
 
   .layout-game {
@@ -297,14 +313,15 @@ body {
 
 @media (max-width: 480px) {
   .keyboard .row-keyboard {
-    flex-wrap: wrap; /* las teclas se apilan en pantallas mas peq*/
+    flex-wrap: wrap;
+    /* las teclas se apilan en pantallas mas peq*/
   }
 
   .key-enable {
-    flex: 1 1 20%; /* las teclas ocupan un 20% del espacio disponible */
+    flex: 1 1 20%;
+    /* las teclas ocupan un 20% del espacio disponible */
   }
 }
-
 
 /* Estilos del modal categoria */
 .modal-catg {
@@ -328,31 +345,44 @@ body {
   margin: 15% auto;
   border: 1px solid #888;
   box-shadow: 0 5px 7px #ff0055;
-  width: auto;
+  /* width: auto;*/
 }
+
+/*R E V I S A R */
+.category-btn {
+  margin-top: 10px;
+  padding-bottom: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options-btn {
+  margin-top: 10px;
+  padding-bottom: 0;
+  width: 20%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options-btn button {
+  text-align: center;
+  width: 100%;
+}
+
 
 .modal-content-catg h2 {
   margin-bottom: 20px;
   color: #1c0e32;
   font-family: 'Sophia';
-  font-size: 40px;
+  font-size: 30px;
 }
-
-.close-catg {
-  padding: 0;
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-catg:hover,
-.close-catg:focus {
-  color: rgb(255, 0, 0);
-  text-decoration: none;
-  cursor: pointer;
-}
-
+/*
 .button {
   touch-action: manipulation;
   outline: none;
@@ -366,15 +396,15 @@ body {
   padding: 0 1em;
   margin: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(255, 0, 85, 0.4),
-      inset 0 -2px 5px 1px rgba(255, 20, 100, 1),
-      inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
+    0 3px 6px rgba(255, 0, 85, 0.4),
+    inset 0 -2px 5px 1px rgba(255, 20, 100, 1),
+    inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
   background-image: linear-gradient(160deg,
-          #ff0055,
-          #ff4077,
-          #ff99aa,
-          #ff3366,
-          #ff0055);
+      #ff0055,
+      #ff4077,
+      #ff99aa,
+      #ff3366,
+      #ff0055);
   border: 1px solid #ff3366;
   color: rgb(255, 255, 255);
   text-shadow: 0 2px 2px rgba(255, 128, 170, 1);
@@ -388,32 +418,32 @@ body {
 .button:hover {
   background-size: 150% 150%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-      0 6px 6px rgba(0, 0, 0, 0.23),
-      inset 0 -2px 5px 1px rgba(255, 40, 90, 1),
-      inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
+    0 6px 6px rgba(0, 0, 0, 0.23),
+    inset 0 -2px 5px 1px rgba(255, 40, 90, 1),
+    inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
   border: 1px solid rgba(255, 40, 90, 0.6);
   color: rgba(128, 0, 45, 0.8);
 }
 
 .button:active {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(255, 0, 85, 0.4),
-      inset 0 -2px 5px 1px rgba(255, 40, 90, 1),
-      inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
+    0 3px 6px rgba(255, 0, 85, 0.4),
+    inset 0 -2px 5px 1px rgba(255, 40, 90, 1),
+    inset 0 -1px 1px 3px rgba(255, 128, 170, 1);
 }
-
+*/
 /*Boton Intermedio*/
 .button.int {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(67, 121, 242, 0.4),
-      inset 0 -2px 5px 1px rgba(50, 100, 210, 1),
-      inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
+    0 3px 6px rgba(67, 121, 242, 0.4),
+    inset 0 -2px 5px 1px rgba(50, 100, 210, 1),
+    inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
   background-image: linear-gradient(160deg,
-          #4379F2,
-          #5A8EF5,
-          #7AA5F7,
-          #5286F3,
-          #4379F2);
+      #4379F2,
+      #5A8EF5,
+      #7AA5F7,
+      #5286F3,
+      #4379F2);
   border: 1px solid #5286F3;
   color: rgb(255, 255, 255);
   text-shadow: 0 2px 2px rgba(130, 160, 250, 1);
@@ -427,32 +457,32 @@ body {
 .button.int:hover {
   background-size: 150% 150%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-      0 6px 6px rgba(0, 0, 0, 0.23),
-      inset 0 -2px 5px 1px rgba(60, 110, 220, 1),
-      inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
+    0 6px 6px rgba(0, 0, 0, 0.23),
+    inset 0 -2px 5px 1px rgba(60, 110, 220, 1),
+    inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
   border: 1px solid rgba(60, 110, 220, 0.6);
   color: rgba(30, 70, 180, 0.8);
 }
 
 .button.int:active {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(67, 121, 242, 0.4),
-      inset 0 -2px 5px 1px rgba(60, 110, 220, 1),
-      inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
+    0 3px 6px rgba(67, 121, 242, 0.4),
+    inset 0 -2px 5px 1px rgba(60, 110, 220, 1),
+    inset 0 -1px 1px 3px rgba(130, 160, 250, 1);
 }
 
 /*Boton Basico*/
 .button.basic {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(110, 194, 7, 0.4),
-      inset 0 -2px 5px 1px rgba(80, 160, 5, 1),
-      inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
+    0 3px 6px rgba(110, 194, 7, 0.4),
+    inset 0 -2px 5px 1px rgba(80, 160, 5, 1),
+    inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
   background-image: linear-gradient(160deg,
-          #6EC207,
-          #87D209,
-          #A1E311,
-          #7DCC0A,
-          #6EC207);
+      #6EC207,
+      #87D209,
+      #A1E311,
+      #7DCC0A,
+      #6EC207);
   border: 1px solid #7DCC0A;
   color: rgb(255, 255, 255);
   text-shadow: 0 2px 2px rgba(150, 220, 50, 1);
@@ -466,16 +496,247 @@ body {
 .button.basic:hover {
   background-size: 150% 150%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-      0 6px 6px rgba(0, 0, 0, 0.23),
-      inset 0 -2px 5px 1px rgba(90, 175, 5, 1),
-      inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
+    0 6px 6px rgba(0, 0, 0, 0.23),
+    inset 0 -2px 5px 1px rgba(90, 175, 5, 1),
+    inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
   border: 1px solid rgba(90, 175, 5, 0.6);
   color: rgba(60, 130, 5, 0.8);
 }
 
 .button.basic:active {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(110, 194, 7, 0.4),
-      inset 0 -2px 5px 1px rgba(90, 175, 5, 1),
-      inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
+    0 3px 6px rgba(110, 194, 7, 0.4),
+    inset 0 -2px 5px 1px rgba(90, 175, 5, 1),
+    inset 0 -1px 1px 3px rgba(150, 220, 50, 1);
 }
+
+.modal-positions {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content-positions {
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  color: #1c0e32;
+  border: 2px solid #E90064;
+  box-shadow: 0 0 20px #E90064;
+}
+
+table {
+  position: relative;
+  border-spacing: 50px 5px;
+  margin: auto;
+  border-top: 2px solid #E90064;
+  border-bottom: 3px solid #E90064;
+}
+
+table::after {
+  content: "";
+  position: absolute;
+  top: calc(8% + 5px);
+  /* Ubica la línea justo debajo del <thead> */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #E90064;
+}
+
+th {
+  color: #E90064;
+}
+
+/*BOTONES DE CAT*/
+.btn-container {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-btn {
+  width: 80px;
+  height: 30px;
+  background-color: #5286F3;
+  transition-duration: .2s;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px #bebdbd, 0 4px 6px -2px #bebdbd;
+  transition: all .6s ease;
+  
+}
+
+.restart-btn {
+  width: 80px;
+  height: 30px;
+  background-color: #7DCC0A;
+  transition-duration: .2s;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px #bebdbd, 0 4px 6px -2px #bebdbd;
+  transition: all .6s ease;
+}
+
+.restart-btn:hover {
+  background-color: #7DCC0A;
+  box-shadow: 0 10px 15px -3px #c0f96b, 0 4px 6px -2px #c0f96b;
+  transition-duration: .2s;
+}
+
+.close-btn {
+  width: 80px;
+  height: 30px;
+  background-color: #E90064;
+  transition-duration: .2s;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px #bebdbd, 0 4px 6px -2px #bebdbd;
+  transition: all .6s ease;
+}
+
+.close-btn:hover {
+  background-color: #E90064;
+  box-shadow: 0 10px 15px -3px #fb75af, 0 4px 6px -2px #fb75af;
+  transition-duration: .2s;
+}
+
+.save-btn:hover {
+  background-color: #5286F3;
+  box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
+  transition-duration: .2s;
+}
+
+.modal-options {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content-options {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 15% auto;
+  border: 1px solid #888;
+  /* box-shadow: 0 5px 7px #ff0055;*/
+  width: 25%;
+  font-family: 'poppins';
+  font-size: 16px;
+  color: #1c0e32;
+}
+
+.modal-content-options p {
+  font-size: 14px;
+}
+
+
+.modal-options {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content-options {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 15% auto;
+  border: 1px solid #888;
+  /* box-shadow: 0 5px 7px #ff0055;*/
+  width: 25%;
+  font-family: 'poppins';
+  font-size: 16px;
+  color: #1c0e32;
+}
+
+.modal-content-options p {
+  font-size: 14px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.accept-btn {
+  width: 80px;
+  height: 30px;
+  background-color: #7b57ff;
+  transition-duration: .2s;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px #977ef3, 0 2px 4px -1px #977ef3;
+  transition: all .6s ease;
+}
+
+.decline-btn {
+  width: 80px;
+  height: 30px;
+  background-color: #dadada;
+  transition-duration: .2s;
+  color: rgb(46, 46, 46);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px -1px #bebdbd, 0 2px 4px -1px #bebdbd;
+  transition: all .6s ease;
+}
+
+.decline-btn:hover {
+  background-color: #ebebeb;
+  box-shadow: 0 10px 15px -3px #bebdbd, 0 4px 6px -2px #bebdbd;
+  transition-duration: .2s;
+}
+
+.accept-btn:hover {
+  background-color: #9173ff;
+  box-shadow: 0 10px 15px -3px #977ef3, 0 4px 6px -2px #977ef3;
+  transition-duration: .2s;
+}
+

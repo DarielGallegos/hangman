@@ -14,9 +14,11 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="form-box Login">
-            <h2>Login</h2>
+    <div class="container" id="container">
+        <!--Sign In Form-->
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h2>Inicio de Sesión</h2>
                 <div class="input-box">
                     <input id="txtUser" type="text" required>
                     <label for="">Usuario</label>
@@ -28,50 +30,82 @@
                     <i class='bx bx-lock-alt'></i>
                 </div>
                 <div class="input-box">
-                    <button id="loginBtn" class="btn">Ingresar
-                    </button>
+                    <button id="loginBtn" class="btn" type="submit">Ingresar</button>
                 </div>
                 <br>
                 <div class="register-link">
-                    <p>¿No tienes una cuenta? <a href="#" class="signUpLink">Registrate</a></p>
-                </div>
-        </div>
-        <div class="info-content Login">
-            <img src="../../static/assets/images/icon.png" alt=""><br>
-            <h2>WELCOME TO <br>HANGMAN GAME</h2>
-        </div>
-
-        <div class="form-box Register">
-            <h2>Registro</h2>
-            <form action="#">
-                <div class="input-box">
-                    <input type="text" required>
-                    <label for="">Usuario</label>
-                    <i class='bx bx-user'></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" required>
-                    <label for="">Contraseña</label>
-                    <i class='bx bx-lock-alt'></i>
-                </div>
-                <div class="input-box">
-                    <button class="btn" type="submit">Registrarse
-                        </span>
-                    </button>
-                </div>
-                <br>
-                <div class="register-link">
-                    <p>Ya tienes una cuenta <a href="#" class="signInLink">Inicia Sesión</a></p>
+                    <p>¿No tienes una cuenta? <a href="#" id="signUp" class="signUpLink">Registrate</a></p>
                 </div>
             </form>
         </div>
-        <div class="info-content Register">
-            <img src="../../static/assets/images/icon.png" alt=""><br>
-            <h2>WELCOME TO <br>HANGMAN GAME</h2>
+        <!--Sign Up Form-->
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h2>Registro</h2>
+                <div class="name">
+                    <div class="input-box">
+                        <input id="txtName" type="text" required>
+                        <label for="">Nombre</label>
+                    </div>
+                    <div class="input-box">
+                        <input id="txtLastName" type="text" required>
+                        <label for="">Apellido</label>
+                    </div>
+                </div>
+                <div class="input-box"> 
+                    <input id="txtUserR" type="text" required>
+                    <label for="">Usuario</label>
+                </div>
+                <div class="input-box">
+                    <input id="txtPasswdR" type="password" required>
+                    <label for="">Contraseña</label>
+                </div> <div class="input-box"> 
+                    <input id="txtPassCR" type="password" required>
+                    <label for="">Confirmar contraseña</label>
+                </div>
+                    <button id="registerBtn" class="btn" type="submit">Registrarse</button>
+                <div class="register-link">
+                    <p>Ya tienes una cuenta <a href="#" id="signIn" class="signInLink">Inicia Sesión</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Wlcome message -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <img src="../../static/assets/images/icon.png" alt="">
+                    <h1>Welcome To Hangman Game!</h1>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <img src="../../static/assets/images/icon.png" alt="">
+                    <h1>Welcome To Hangman Game!</h1>
+                </div>
+            </div>
         </div>
     </div>
 
-    
+    <!--ACCESO DENEGADO-->
+    <div id="accesoDenegado" class="modalAlert">
+        <div class="modal-content">
+            <img src="../../static/assets/images/error.png" alt="" class="error">
+            <h3 class="text">Acceso Denegado</h3>
+            <h5 class="text">Usuario o contraseña incorrectos.</h3>
+            <button class="btn" id="aceptarA"> <strong>Aceptar</strong></button>
+        </div>
+    </div>
+    <!--FIN-->
+
+     <!--REGISTO-->
+     <div id="registroExitoso" class="modalAlert">
+        <div class="modal-content registro">
+            <img id="imgStatus" alt="" class="error">
+            <h3 id="statusR" class="text">Registro Exitoso</h3>
+            <button class="btn" id="aceptarR"> <strong>Aceptar</strong></button>
+        </div>
+    </div>
+    <!--FIN-->
+
     <script src="{% static 'js/login.js'%}"></script>
     <script src="{% static 'js/jquery.min.js'%}"></script>
 </body>

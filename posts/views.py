@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from posts.models import Users, Words
+from django.db import connection
 # Create your views here.
 
 def home(request):
@@ -11,13 +12,29 @@ def home(request):
 
 def game(request):
     if 'id_user' in request.session:
-        ctx = {'user': request.session['nombre'] + ' ' + request.session['apellido']}
+        ctx = {'user': request.session['user']}
         return render(request, 'posts/index.html', ctx)
     return render(request, 'auth/login.html')
 
 def logout(request):
     request.session.flush()
     return HttpResponse(json.dumps({"status":True, "msg": "Sesión cerrada", "redirect_url":"/"}), content_type='application/json')
+
+
+@csrf_exempt
+def register(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        usuario = request.POST.get('user')
+        passwd = request.POST.get('password')
+        
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(f"CALL insertUser('{nombre}', '{apellido}', '{usuario}', '{passwd}');")
+            return HttpResponse(json.dumps({"status": True, "msg": "Registro exitoso", "redirect_url":"register/"}), content_type='application/json')
+        except Exception as e:
+            return HttpResponse(json.dumps({"status": False, "msg": f"Error en el registro: {str(e)}"}), content_type='application/json')
 
 @csrf_exempt
 def login(request):

@@ -74,39 +74,157 @@
                 <br>
             </section>
             <section class="layout-buttons">
-                <button class="button">Tabla de Posiciones</button>
-                <button class="button">Reiniciar</button>
+                <div>
+                    <button id="cambiarCatg" class="button">Categorías</button>
+                    <button id="tablaPosiciones" class="button">Posiciones</button>
+                </div>
+                <button id="reiniciar" class="button">Reiniciar</button>
+
             </section>
         </section>
     </main>
 
-    <!--MODAL-->
+    <!--Modal Resumen-->
     <div id="modal" class="modal-end">
         <div class="modal-content">
-            <span class="close">&times;</span>
             <img id="modal-img" class="win-img" src="" alt="Resultado">
             <h3>Puntos:</h3>
             <h3 id="modal-points">0</h3>
-            <div class="layout-buttons-modal">
+            <div class="button-modal">
                 <button class="button" id="continue-button"> <strong>Continuar</strong></button>
             </div>
         </div>
     </div>
-    <!--FIN MODAL-->
+    <!--Fin Modal-->
 
     <!-- Modal Categorias-->
     <div id="categoryModal" class="modal-catg">
         <div class="modal-content-catg">
-            <span class="close-catg">&times;</span>
+            <span id="closeC" class="close" style="cursor:pointer;">&times;</span>
             <h2>SELECCIONE UNA CATEGORÍA</h2>
             <div class="category-btn">
                 <button onclick="selectDificult(1)" class="button basic" id="basico">Básico</button>
                 <button onclick="selectDificult(2)" class="button int" id="intermedio">Intermedio</button>
                 <button onclick="selectDificult(3)" class="button avan" id="avanzado">Avanzado</button>
             </div>
+            <br>
         </div>
     </div>
     <!--fin modal-->
+
+    <!-- Modal de opciones despues de cat-->
+    <div id="modalOptions" class="modal-options">
+        <div class="modal-content-options">
+            <h3 id="optionsText"></h3>
+            <p id="optionsInfo" class="info"></p>
+            <br>
+            <div class="btn-container">
+                <button id="confirmNo" class="decline-btn">No</button>
+                <button id="confirmYes" class="accept-btn">Sí</button>
+            </div>
+        </div>
+    </div>
+    <!--fin modal-->
+
+    <!-- Modal msg fin-->
+    <div id="modalClose" class="modal-options">
+        <div class="modal-content-options">
+            <h3 id="closeText"></h3>
+            <p id="closeInfo" class="info"></p>
+            <br>
+            <div class="btn-container">
+                <button id="closeConfirm" class="accept-btn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!--fin modal-->
+
+    <!-- Modal Logout Options-->
+    <div id="logoutModal" class="modal-catg">
+        <div class="modal-content-catg">
+            <h2>¿Estás seguro de cerrar tu sesión? </h2>
+            <div class="category-btn">
+                <button class="button int" id="no">No</button>
+                <button class="button avan" id="yes">Si</button>
+            </div>
+        </div>
+    </div>
+    <!--fin modal-->
+
+    <!-- Tabla de Posiciones-->
+    <div id="positions" class="modal-positions">
+        <div class="modal-content-positions">
+            <span id="closeM" class="close" style="cursor:pointer;">&times;</span>
+            <h3>⭐⭐⭐⭐⭐</h3>
+            <h2>Tabla de Posiciones </h2>
+            <br>
+            <div class="tablaPositions">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Usuario</th>
+                            <th>Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇</td>
+                            <td>spin</td>
+                            <td>10000</td>
+                        </tr>
+                        <tr>
+                            <td>🥈</td>
+                            <td>jdsanc</td>
+                            <td>9000</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>mey</td>
+                            <td>7000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--fin-->
 </body>
 <script src="{% static 'js/jquery.min.js'%}"></script>
 <script src="{% static 'js/InitGame.js'%}"></script>
