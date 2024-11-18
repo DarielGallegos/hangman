@@ -10,4 +10,6 @@ urlpatterns = [
     path('login/', views.login),
     path('register/', views.register),
     path('logout/', views.logout),
+    path('save_score/', views.saveScore),
+    path('get_positions/', views.getPositionsPlayer),
 ]

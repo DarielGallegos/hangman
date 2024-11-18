@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from posts.models import Users, Words
+from posts.models import Users, Words, ScoreBoard
 from django.db import connection
 # Create your views here.
 
@@ -56,5 +56,30 @@ def game_dificulty(request, game_id):
     if 'id_user' in request.session:
         word = Words.objects.raw(f"CALL selectWord({game_id});")
         if word:
-            return HttpResponse(json.dumps({"status" : True, "msg" : "Palabra encontrada", "word": word[0].word}), content_type='application/json')
+            return HttpResponse(json.dumps({"status" : True, "msg" : "Palabra encontrada", "word": word[0].word, "id_word": word[0].id}), content_type='application/json')
     return HttpResponse(json.dumps({"status" : False, "msg" : "Palabra no encontrada"}), content_type='application/json')
+
+@csrf_exempt
+def saveScore(request):
+    if 'id_user' in request.session:
+        points = request.POST['points']
+        attemps = request.POST['attemps']
+        attemps_err = request.POST['attemps_err']
+        id_word = request.POST['id_word']
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(f"CALL insertScore({points},{attemps},{attemps_err},{request.session['id_user']},{id_word});")
+            return HttpResponse(json.dumps({"status":True, "msg": "Puntaje guardado"}), content_type='application/json')
+        except Exception as e:
+            return HttpResponse(json.dumps({"status":False, "msg": f"Error al guardar puntaje: {str(e)}"}), content_type='application/json')
+        
+@csrf_exempt
+def getPositionsPlayer(request):
+    if 'id_user' in request.session:
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(f"SELECT * FROM vw_topplayers;")
+                scores = cursor.fetchall()
+            return HttpResponse(json.dumps({"status":True, "scores": scores}), content_type='application/json')
+        except Exception as e:
+            return HttpResponse(json.dumps({"status":False, "msg": f"Error al obtener puntajes: {str(e)}"}), content_type='application/json')

@@ -3,10 +3,7 @@ let closeC = document.getElementById('closeC');
 
 document.addEventListener("DOMContentLoaded", function () {
     const savedCategory = localStorage.getItem("selectedCategory");
-    console.log("Categoría guardada:", savedCategory);
-
     if (savedCategory) {
-        console.log("Cargando palabra de la categoría guardada:", savedCategory);
         newWord(savedCategory); 
     } else {
         modalCategory.style.display = 'flex'; 
@@ -112,7 +109,6 @@ function endGame() {
     if (!savedCategory) {
         modalCategory.style.display = 'flex';
     } else {
-        console.log("Categoría guardada, lista para continuar.");
     }
 }
 
@@ -128,8 +124,6 @@ function newWord(categoryId) {
                 dataWord = { word: res.word, id_word: res.id_word };
                 loadWord(res.word);
 
-                console.log("Nueva palabra cargada:", palabra);
-                console.log("Intentos restantes:", attempts);
                 modalCategory.style.display = "none";
             } else {
                 console.log("Error al obtener la palabra.");

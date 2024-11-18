@@ -9,7 +9,6 @@ let palabraFin = null;
 
 function loadWord(word) {
     palabraFin = word.toUpperCase();
-    console.log(palabraFin);
     palabra = word.toUpperCase()
     palabra = palabra.split("")
     setDataHUD()
@@ -63,6 +62,7 @@ function getLetter(letter) {
                 if (lengthWord === lengthWordGuessed) {
                     playSound(dataSounds[3]["id"])
                     showModalResult("../../static/assets/images/completed.svg", points, "Acertaste la palabra:" + "\n" + palabraFin);
+                    saveScore()
                     return;
                 }
             }
@@ -150,6 +150,44 @@ document.getElementById('tablaPosiciones').addEventListener("click", () => {
 
 // Funcion Para Ver Tabla de Posiciones 
 function showPositions() {
+    $.ajax({
+        url: '/get_positions/',
+        type: 'GET'
+    }).done((response) => {
+        let table = document.getElementById('content-table');
+
+        response.scores.forEach((score, index) => {
+            let tr = document.createElement('tr');
+            let th1 = document.createElement('th');
+            let th2 = document.createElement('th');
+            let th3 = document.createElement('th');
+            
+            switch(index){
+                case 0:
+                    th1.innerText = "🥇";
+                    break;
+                case 1:
+                    th1.innerText = "🥈";
+                    break;
+                case 2:
+                    th1.innerText = "🥉";
+                    break;
+                default:
+                    th1.innerText = index+1;
+                    break;
+            }
+            th2.innerText = score[0];
+            th3.innerText = score[1];
+
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+
+            table.appendChild(tr);
+        });
+    }).fail((error) => {
+        console.error(error)
+    })
     positions.style.display = 'flex';
 }
 // Cerrar el Modal de Posiciones
