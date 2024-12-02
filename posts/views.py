@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from posts.models import Users, Words, ScoreBoard
 from django.db import connection
+from decimal import Decimal
 # Create your views here.
 
 def home(request):
@@ -78,8 +79,12 @@ def getPositionsPlayer(request):
     if 'id_user' in request.session:
         try:
             with connection.cursor() as cursor:
-                cursor.execute(f"SELECT * FROM vw_topplayers;")
+                cursor.execute(f"SELECT * FROM topplayers;")
                 scores = cursor.fetchall()
-            return HttpResponse(json.dumps({"status":True, "scores": scores}), content_type='application/json')
+                scores = [
+                     [str(item) if isinstance(item, Decimal) else item for item in row]
+                     for row in scores
+                ]
+                return HttpResponse(json.dumps({"status":True, "scores": scores}), content_type='application/json')
         except Exception as e:
             return HttpResponse(json.dumps({"status":False, "msg": f"Error al obtener puntajes: {str(e)}"}), content_type='application/json')

@@ -74,13 +74,25 @@ WSGI_APPLICATION = 'hangman.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default':{
+#         "ENGINE": "django.db.backends.mysql",
+#         "OPTIONS" : {
+#             "read_default_file" : "posts/static/database/db-hangman.cnf",
+#         }
+#     }
+# }
+
 DATABASES = {
     'default':{
         "ENGINE": "django.db.backends.mysql",
-        "OPTIONS" : {
-            "read_default_file" : "posts/static/database/db-hangman.cnf",
+        "NAME" : "stcenche_hangman",
+        "USER" : "stcenche_grupo3ac",
+        "PASSWORD" : "grupo3ac2024",
+        "HOST" : '208.91.198.166',
+        "PORT": "3306",
+        'TrustServerCertificate':True
         }
-    }
 }
 
 

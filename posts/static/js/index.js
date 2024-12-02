@@ -145,16 +145,27 @@ document.getElementById('reiniciar').addEventListener("click", () => {
 
 // Mostrar Tabla de Posiciones
 document.getElementById('tablaPosiciones').addEventListener("click", () => {
-    showPositions();
+    if (!isDataLoaded) {
+        showPositions();
+        isDataLoaded = true; // Marca los datos como cargados
+    } else {
+        console.log("Los datos ya están cargados.");
+    }
 });
+
+let isDataLoaded = false; // Controla si 
 
 // Funcion Para Ver Tabla de Posiciones 
 function showPositions() {
+   
     $.ajax({
         url: '/get_positions/',
         type: 'GET'
     }).done((response) => {
+        
         let table = document.getElementById('content-table');
+        table.innerHTML = '';
+        console.log(response);
 
         response.scores.forEach((score, index) => {
             let tr = document.createElement('tr');
@@ -185,20 +196,22 @@ function showPositions() {
 
             table.appendChild(tr);
         });
+        positions.style.display = 'flex';
     }).fail((error) => {
         console.error(error)
     })
-    positions.style.display = 'flex';
 }
 // Cerrar el Modal de Posiciones
 closeM.onclick = function () {
     positions.style.display = 'none';
+    isDataLoaded = false;
 };
 
 // Cerrar el Modal de Posiciones Presionando Cualquier Lugar Fuera de el
 window.onclick = function (event) {
     if (event.target === positions) {
         positions.style.display = 'none';
+        isDataLoaded = false;
     }
 };
 

@@ -2,6 +2,12 @@ ARG PYTHON_VERSION=3.12.0
 ARG PORT_SERVER=8000
 FROM python:${PYTHON_VERSION}-slim as base
 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /hangman
 
 COPY requirements.txt .
