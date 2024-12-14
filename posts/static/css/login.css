@@ -4,6 +4,7 @@
     box-sizing: border-box;
     color: aliceblue;
     font-family: poppins;
+    font-size: 16px;
 }
 
 @font-face {
@@ -34,7 +35,7 @@ body {
     position: relative;
     overflow: hidden;
     width: 768px;
-    max-width: 100%;
+    max-width: 95%;
     min-height: 480px;
     border-radius: 20px;
     border: 2px solid #E90064;
@@ -131,7 +132,7 @@ input:-webkit-autofill:focus {
     position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
     font-size: 16px;
     color: #fff;
     transition: .5s;
@@ -309,4 +310,21 @@ img {
     border-radius: 5px;
     padding: 8px;
     background-color: #1f5afe;
+}
+
+
+
+/* Media queries para pantallas muy pequeñas */
+@media (max-width: 480px) {
+
+    form{
+        padding: 0 5px;
+        width: 90%;
+    }
+
+    .container {
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: none;
+    }
 }

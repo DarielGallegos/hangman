@@ -1,4 +1,4 @@
-.nav-bar{
+.nav-bar {
     display: flex;
     width: 100%;
     height: 90px;
@@ -7,12 +7,12 @@
     border-bottom: 2px solid #ff0055;
 }
 
-.nav-bar div ul{
+.nav-bar div ul {
     list-style-type: none;
     margin: 10%;
 }
 
-.nav-bar div ul li a{
+.nav-bar div ul li a {
     color: white;
     text-decoration: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -20,57 +20,58 @@
 }
 
 /* tamaño del nombre */
-.nav-bar__menu li a img{
-    width: 30%;  
-    height: 30%; 
+.nav-bar__menu li a img {
+    width: 30%;
+    height: 30%;
     display: block;
     margin-left: 40%;
     margin-top: 1%;
     margin-bottom: 1%;
 }
 
-.nav-bar__menu{
-    flex-grow: 1; /*ocupa el espacio disponible*/
+.nav-bar__menu {
+    flex-grow: 1;
+    /*ocupa el espacio disponible*/
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nav-bar__menu li{
+.nav-bar__menu li {
     display: inline;
     padding: 0 10px;
     font-size: 25px;
 }
 
-.nav-bar__user{
+.nav-bar__user {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
 }
 
-.nav-bar__user li{
+.nav-bar__user li {
     display: inline;
     padding: 0 10px;
 }
 
-.nav-bar__user li a.logout{
+.nav-bar__user li a.logout {
     font-size: 25px;
     text-decoration: nome;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.nav-bar__user li a.logout{
+.nav-bar__user li a.logout {
     font-size: 25px;
     text-decoration: nome;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.logout img{
-    width: 80%;  
-    height: 50%; 
+.logout img {
+    width: 80%;
+    height: 50%;
     display: block;
-   /* margin-left: 40%;*/
+    /* margin-left: 40%;*/
     margin-right: 10%;
     margin-top: 1%;
     margin-bottom: 1%;
